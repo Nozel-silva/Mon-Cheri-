@@ -48,12 +48,19 @@
 </head>
 <body>
 
-    <div class="header">Mon Cheri🤎🤎🤎, Tap to open a card 🤲🏽</div>
+    <div class="header">Mon Cheri, pls open a card 🤲🏽</div>
     <div class="grid" id="cardGrid"></div>
 
     <script>
         // Check if the game has been played today
-        
+        const today = new Date().toLocaleDateString();
+        const lastPlayed = localStorage.getItem("lastPlayed");
+
+        if (lastPlayed === today) {
+            alert("You've already played today! Come back tomorrow. ❤️");
+            document.body.innerHTML = "<h2 style='text-align: center; color: red;'>Come back tomorrow, Mon Cheri! 💕</h2>";
+            throw new Error("Game already played today.");
+        }
 
         // Alert without delay
         alert("You can only play it once a day. Make three selections, take a screenshot, and send it to your partner to perform the tasks.");
@@ -102,7 +109,7 @@
             cardGrid.appendChild(cardContainer);
 
             cardContainer.addEventListener("click", () => {
-                if (!card.classList.contains("flipped") && flipCount < 3) {
+                if (!card.classList.contains("flipped") && flipCount < 1) {
                     card.classList.add("flipped");
                     flipCount++;
                 }
