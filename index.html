@@ -102,6 +102,102 @@
             const back = document.createElement("div");
             back.classList.add("back");
             back.innerText = tasks[i];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card Game</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            height: 100vh; background-color: #121212; color: white; overflow: hidden;
+        }
+
+        /* Romantic Header */
+        .header {
+            font-family: "Cursive", sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Grid Layout */
+        .grid { 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; 
+            margin-top: 10px; padding: 20px;
+        }
+        
+        /* Card Styling */
+        .card-container { perspective: 1000px; cursor: pointer; }
+        .card { 
+            width: 100px; height: 140px; position: relative; transform-style: preserve-3d; 
+            transition: transform 0.6s; 
+        }
+        .card.flipped { transform: rotateY(180deg); }
+        
+        /* Card Front & Back */
+        .card .front, .card .back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            display: flex; align-items: center; justify-content: center; border-radius: 8px;
+            font-size: 12px; text-align: center; padding: 8px; font-weight: bold;
+        }
+        .card .front { background: red; color: white; }
+        .card .back { background: black; color: white; transform: rotateY(180deg); border: 2px solid red; }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">Mon Cheri, pls open a card 🤲🏽</div>
+    <div class="grid" id="cardGrid"></div>
+
+    <script>
+        // Check if the game has been played today
+        
+        // Alert without delay
+        alert("You can only play it once a day. Make three selections, take a screenshot, and send it to your partner to perform the tasks.");
+
+        // Store today's date after playing
+        
+
+        const tasks = [
+          "Take a song request", "Credit your partner 1k", "Send the last saved photo in your gallery",
+            "Call your partner's family member just to greet them", "Tell your partner an uncomfortable childhood story ",
+            "Credit your partner 500 naira airtime", "Tell your partner a secret", "Post your partner on your status ",
+            "Bonus, no task"
+        ];
+
+        // Shuffle function
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffleArray(tasks); // Randomize tasks
+
+        const cardGrid = document.getElementById("cardGrid");
+        let flipCount = 0;
+
+        for (let i = 0; i < 9; i++) {
+            const cardContainer = document.createElement("div");
+            cardContainer.classList.add("card-container");
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            const front = document.createElement("div");
+            front.classList.add("front");
+            front.innerText = "Tap to Flip";
+
+            const back = document.createElement("div");
+            back.classList.add("back");
+            back.innerText = tasks[i];
 
             card.appendChild(front);
             card.appendChild(back);
@@ -119,3 +215,4 @@
 
 </body>
 </html>
+
