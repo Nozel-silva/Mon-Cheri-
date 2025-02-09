@@ -53,14 +53,7 @@
 
     <script>
         // Check if the game has been played today
-        const today = new Date().toLocaleDateString();
-        const lastPlayed = localStorage.getItem("lastPlayed");
-
-        if (lastPlayed === today) {
-            alert("You've already played today! Come back tomorrow. ❤️");
-            document.body.innerHTML = "<h2 style='text-align: center; color: red;'>Come back tomorrow, Mon Cheri! 💕</h2>";
-            throw new Error("Game already played today.");
-        }
+        
 
         // Alert without delay
         alert("You can only play it once a day. Make three selections, take a screenshot, and send it to your partner to perform the tasks.");
