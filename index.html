@@ -53,18 +53,13 @@
 
     <script>
         // Check if the game has been played today
-        
-
-        // Alert without delay
-        alert("You can only play it once a day. Make three selections, take a screenshot, and send it to your partner to perform the tasks.");
-
-        // Store today's date after playing
+        const today = new Date().toLocaleDateString();
         
 
         const tasks = [
-          "Take a song request", "Credit your partner 1k", "Send the last saved photo in your gallery",
-            "Call your partner's family member just to greet them", "Tell your partner an uncomfortable childhood story ",
-            "Credit your partner 500 naira airtime", "Tell your partner a secret", "Post your partner on your status ",
+          "Take a song request", "Call me and say “I miss you” in five different tones  ", "Send the last saved photo in your gallery",
+            "List three things you’d do if we had 24 hours together right now  ", "Tell your partner an uncomfortable childhood story ",
+            "Type out a message using only emojis and let me guess what it means", "Tell your partner a secret", "Post your partner on your status ",
             "Bonus, no task"
         ];
 
