@@ -43,37 +43,33 @@
         }
         .card .front { background: red; color: white; }
         .card .back { background: black; color: white; transform: rotateY(180deg); border: 2px solid red; }
+
     </style>
 </head>
 <body>
-    <div class="header">Mon Cheri, pls open a card 🤲🏽<br>❤️ Happy Valentine's Day ❤️</div>
+
+    <div class="header">Mon Cheri, pls open a card 🤲🏽</div>
     <div class="grid" id="cardGrid"></div>
+    <p>Happy Valentine's Day! 💖</p>
 
     <script>
-        const maxVisits = 3;
-        const today = new Date().toISOString().split('T')[0];
-        const visitsData = JSON.parse(localStorage.getItem("gameVisits")) || {};
+        // Check if the game has been played today
         
-        if (!visitsData[today]) {
-            visitsData[today] = 0;
-        }
 
-        if (visitsData[today] >= maxVisits) {
-            alert("You have reached the maximum of 3 visits for today. Come back tomorrow!");
-            document.body.innerHTML = "<h2 style='color: red; text-align: center;'>Come back tomorrow! ❤️</h2>";
-        } else {
-            visitsData[today]++;
-            localStorage.setItem("gameVisits", JSON.stringify(visitsData));
-            alert("You can only play 3 times a day. Make three selections, take a screenshot, and send it to your partner to perform the tasks.");
-        }
+        // Alert without delay
+        alert("You can only play it once a day. Make one selection, take a screenshot, and send it to your partner to perform the task.");
+
+        // Store today's date after playing
         
+
         const tasks = [
-            "Take a song request", "Credit your partner 1k", "Send the last saved photo in your gallery",
-            "Call your partner's family member just to greet them", "Tell your partner an uncomfortable childhood story",
-            "Credit your partner 500 naira airtime", "Tell your partner a secret", "Post your partner on your status",
+          "Take a song request", "Credit your partner 1k", "Send the last saved photo in your gallery",
+            "Call your partner's family member just to greet them", "Tell your partner an uncomfortable childhood story ",
+            "Credit your partner 500 naira airtime", "Tell your partner a secret", "Post your partner on your status ",
             "Bonus, no task"
         ];
 
+        // Shuffle function
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -81,7 +77,7 @@
             }
         }
 
-        shuffleArray(tasks);
+        shuffleArray(tasks); // Randomize tasks
 
         const cardGrid = document.getElementById("cardGrid");
         let flipCount = 0;
@@ -107,12 +103,13 @@
             cardGrid.appendChild(cardContainer);
 
             cardContainer.addEventListener("click", () => {
-                if (!card.classList.contains("flipped") && flipCount < 3) {
+                if (!card.classList.contains("flipped") && flipCount < 1) {
                     card.classList.add("flipped");
                     flipCount++;
                 }
             });
         }
     </script>
+
 </body>
 </html>
